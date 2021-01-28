@@ -21,6 +21,6 @@ app.post('/API/data/send', (req, res)=>{
 })
 
 // Listening to APIs
-app.listen(process.env.PORT || 8000, () =>
-	console.log("Listening on Port 8000")
+app.listen(process.env.PORT || 8001, () =>
+	console.log("Listening on Port 8001")
 )
