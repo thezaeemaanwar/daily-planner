@@ -1,38 +1,49 @@
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  text-align: center;
+  flex-direction: column;
 }
 
-.App-link {
-  color: #61dafb;
+table thead tr td {
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+table thead tr td:hover {
+  cursor: pointer;
+  background-color: rgb(38, 77, 114);
+  
+}
+table tbody tr td {
+  padding: 10px;
+  width: 100px;
+}
+table {
+  background-color: rgb(240, 238, 238);
+  box-shadow: rgb(187, 186, 186) 2px 3px 4px;
+}
+.head {
+  background-color: rgb(24, 59, 92);
+  color: aliceblue;
+  width: 100px;
+  padding: 10px;
+}
+.headSelected{
+  background-color: rgb(57, 102, 139);
+  color: aliceblue;
+  width: 100px;
+  padding: 10px;
+}
+.head:hover{
+  cursor: pointer;
+  background-color: rgb(38, 77, 114);
+}
+.head:active{
+  
+}
+.head:focus{
+  background-color: rgb(228, 234, 240);
+}
+.weekDays{
+  display: flex;
+  flex-direction: row;
 }
