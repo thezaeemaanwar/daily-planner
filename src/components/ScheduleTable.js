@@ -18,8 +18,8 @@ const ScheduleTable = (props) => {
           <button onClick={handleAddSkill}>Add</button>
         </td>
       </tr>
-      {tasks.map((task) => (
-        <tr>
+      {tasks.map((task, ind) => (
+        <tr key={ind}>
           <td>{task}</td>
         </tr>
       ))}

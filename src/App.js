@@ -1,40 +1,29 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import ScheduleTable from "./components/ScheduleTable";
+import Signup from "./components/Signup";
+import firebase from "firebase";
 
 const weekDays = ["Mon", "Tues", "Wed", "Thu", "Fri", "Sat"];
-function App() {
-  const GOOGLE_BUTTON_ID = "google-sign-in-button";
+
+const App = () => {
   const [selectedDay, setSelectedDay] = useState("");
+  const [user, setUser] = useState(null);
+
   const handleSelectDay = (day) => {
     setSelectedDay(day);
   };
-  const [user, setUser] = useState(null);
-  const onSuccess = (googleUser) => {
-    const profile = googleUser.getBasicProfile();
-    console.log(profile);
-  };
-  useEffect(() => {
-    try {
-      window.gapi.signin2.render(GOOGLE_BUTTON_ID, {
-        width: 200,
-        height: 50,
-        onsuccess: onSuccess,
-      });
-    } catch (e) {
-      console.log("Caught an error : ", e);
-    }
-  }, []);
+  console.log("user : ", user);
   return (
     <div className="App">
       {!user ? (
-        // <div className="g-signin2" data-onsuccess={() => onSignIn}></div>
-        <div id={GOOGLE_BUTTON_ID} />
+        <Signup setUser={setUser} />
       ) : (
         <>
           <div className="weekDays">
-            {weekDays.map((day) => (
+            {weekDays.map((day, ind) => (
               <div
+                key={ind}
                 className={day === selectedDay ? "headSelected" : "head"}
                 onClick={() => handleSelectDay(day)}
               >
@@ -53,10 +42,11 @@ function App() {
               tasks={["Task 1", "Task 2", "Task 2"]}
             />
           </table>
+          <button onClick={() => firebase.auth().signOut()}>Sign Out</button>
         </>
       )}
     </div>
   );
-}
+};
 
 export default App;
