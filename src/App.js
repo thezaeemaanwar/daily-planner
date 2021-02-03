@@ -17,7 +17,9 @@ const App = () => {
   return (
     <div className="App">
       {!user ? (
-        <Signup setUser={setUser} />
+        <div className="glassBackground">
+          <Signup setUser={setUser} />
+        </div>
       ) : (
         <>
           <div className="weekDays">
@@ -38,11 +40,15 @@ const App = () => {
               </tr>
             </thead>
             <ScheduleTable
-              skills={["skill 1", "skill 2"]}
-              tasks={["Task 1", "Task 2", "Task 2"]}
+              skills={["skill 1", "skill 2", "skill 3"]}
+              tasks={[
+                { name: "Task 1", duration: 23, "skill 1": 25, "skill 2": 34 },
+                { name: "Task 3", duration: 40, "skill 1": 67, "skill 2": 44 },
+                { name: "Task 3", duration: 30, "skill 1": 83, "skill 2": 34 },
+              ]}
             />
           </table>
-          <button onClick={() => firebase.auth().signOut()}>Sign Out</button>
+          <button onClick={() => firebase.auth().signOut() } className="signOut">Sign Out</button>
         </>
       )}
     </div>

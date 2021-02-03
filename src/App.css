@@ -5,20 +5,42 @@
   text-align: center;
   flex-direction: column;
   height: 100vh;
-  border: 1px solid black;
+  /* border: 1px solid black; */
+  background: linear-gradient(to right, rgb(92, 193, 190), rgb(182, 184, 247));
 }
 
-table thead tr td:hover {
-  cursor: pointer;
-  background-color: rgb(38, 77, 114);
+.glassBackground {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30%;
+  height: 50%;
+  background: linear-gradient(
+    to right,
+    rgba(168, 238, 236, 0.5),
+    rgba(200, 201, 250, 0.3)
+  );
+  border-radius: 10px;
 }
+
 table tbody tr td {
   padding: 10px;
   width: 100px;
 }
+
+table tbody tr .lastRow {
+  border-top: 2px solid rgb(24, 59, 92);
+}
+
 table {
-  background-color: rgb(240, 238, 238);
-  box-shadow: rgb(187, 186, 186) 2px 3px 4px;
+  /* background-color: rgb(240, 238, 238); */
+  box-shadow: rgba(184, 180, 180, 0.3) 2px 3px 4px;
+  background: linear-gradient(
+    to right,
+    rgba(168, 238, 236, 0.5),
+    rgba(200, 201, 250, 0.3)
+  );
+  border-radius: 10px;
 }
 .head {
   background-color: rgb(24, 59, 92);
@@ -26,13 +48,15 @@ table {
   width: 100px;
   padding: 10px;
 }
-.headSelected {
+.headSelected,
+button:focus {
   background-color: rgb(57, 102, 139);
   color: aliceblue;
   width: 100px;
   padding: 10px;
 }
-.head:hover {
+.head:hover,
+button:hover {
   cursor: pointer;
   background-color: rgb(38, 77, 114);
 }
@@ -43,4 +67,16 @@ table {
 .weekDays {
   display: flex;
   flex-direction: row;
+}
+button {
+  background-color: rgb(24, 59, 92);
+  color: aliceblue;
+  width: 100px;
+  padding: 10px;
+}
+
+.signOut {
+  position: absolute;
+  bottom: 25px;
+  right: 25px;
 }
