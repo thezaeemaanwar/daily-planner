@@ -6,19 +6,18 @@
   flex-direction: column;
   height: 100vh;
   /* border: 1px solid black; */
-  background: linear-gradient(to right, rgb(92, 193, 190), rgb(182, 184, 247));
+  background: linear-gradient(to right, rgb(92, 193, 190), rgb(240, 182, 247));
 }
 
 .glassBackground {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 30%;
-  height: 50%;
+  padding: 100px;
   background: linear-gradient(
     to right,
     rgba(168, 238, 236, 0.5),
-    rgba(200, 201, 250, 0.3)
+    rgba(232, 194, 236, 0.3)
   );
   border-radius: 10px;
 }
@@ -38,7 +37,7 @@ table {
   background: linear-gradient(
     to right,
     rgba(168, 238, 236, 0.5),
-    rgba(200, 201, 250, 0.3)
+    rgba(250, 200, 242, 0.3)
   );
   border-radius: 10px;
 }

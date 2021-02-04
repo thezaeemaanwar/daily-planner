@@ -8,7 +8,34 @@ const weekDays = ["Mon", "Tues", "Wed", "Thu", "Fri", "Sat"];
 
 const App = () => {
   const [selectedDay, setSelectedDay] = useState("");
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState({});
+
+  useEffect(() => {
+    console.log("in uef");
+    const createUserInDB = async () => {
+      if (user.uid) {
+        console.log("in if ");
+        if (
+          firebase.auth().currentUser.metadata.lastSignInTime ===
+          firebase.auth().currentUser.metadata.creationTime
+        ) {
+          try {
+            await fetch("/API/users/create", {
+              method: "POST",
+              body: JSON.stringify({ uid: user.uid }),
+              headers: {
+                "Content-Type": "application/json",
+              },
+            });
+            console.log("posted");
+          } catch (error) {
+            console.log("User Creation Error: ", error);
+          }
+        }
+      }
+    };
+    createUserInDB();
+  }, [user]);
 
   const handleSelectDay = (day) => {
     setSelectedDay(day);
@@ -16,7 +43,7 @@ const App = () => {
   console.log("user : ", user);
   return (
     <div className="App">
-      {!user ? (
+      {!user.uid ? (
         <div className="glassBackground">
           <Signup setUser={setUser} />
         </div>
@@ -48,7 +75,9 @@ const App = () => {
               ]}
             />
           </table>
-          <button onClick={() => firebase.auth().signOut() } className="signOut">Sign Out</button>
+          <button onClick={() => firebase.auth().signOut()} className="signOut">
+            Sign Out
+          </button>
         </>
       )}
     </div>

@@ -23,7 +23,7 @@ const Signup = ({ setUser }) => {
           name: firebase.auth().currentUser.displayName,
         });
       } else {
-        setUser(null);
+        setUser({});
       }
     });
     return () => (isMounted = false);
