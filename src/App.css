@@ -79,3 +79,9 @@ button {
   bottom: 25px;
   right: 25px;
 }
+
+.container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

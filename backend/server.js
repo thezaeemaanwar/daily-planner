@@ -5,11 +5,11 @@ const app = express();
 
 app.use(express.json());
 
-console.log("Hi this is server")
+console.log("Server Started")
+
 app.post("/API/users/create", (req, res) => {
-  const uid = req.body;
-  console.log("server uid : ", uid)
-  DB.createUser(uid, res);
+  const request = req.body;
+  DB.createUser(request.uid, res);
 });
 
 // Listening to APIs
