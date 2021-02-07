@@ -137,6 +137,72 @@
                     ]
                 }
         
+            ],
+            "2/7/2021":[
+                {
+                    "session_name":"session 1",
+                    "skills":["skill 1", "skill 2"],
+                    "tasks":[
+                        {
+                        "name": "Task 1",
+                        "duration": 100,
+                        "skills": { "skill 1": 25, "skill 2": 34 }
+                        },
+                        {
+                        "name": "Task 3",
+                        "duration": 100,
+                        "skills": { "skill 1": 67, "skill 2": 44 }
+                        },
+                        {
+                        "name": "Task 3",
+                        "duration": 100,
+                        "skills": { "skill 1": 83, "skill 2": 34 }
+                        }
+                    ]
+                },
+                {
+                    "session_name":"session 2",
+                    "skills":["skill 4", "skill 6"],
+                    "tasks":[
+                        {
+                        "name": "Task 1",
+                        "duration": 100,
+                        "skills": { "skill 4": 25, "skill 6": 34 }
+                        },
+                        {
+                        "name": "Task 3",
+                        "duration": 100,
+                        "skills": { "skill 4": 67, "skill 6": 44 }
+                        },
+                        {
+                        "name": "Task 3",
+                        "duration": 100,
+                        "skills": { "skill 4": 83, "skill 6": 34 }
+                        }
+                    ]
+                },
+                {
+                    "session_name":"session 3",
+                    "skills":["skill 3", "skill 1"],
+                    "tasks":[
+                        {
+                            "name": "Task 1",
+                            "duration": 100,
+                            "skills": { "skill 3": 95, "skill 1": 0 }
+                        },
+                        {
+                            "name": "Task 3",
+                            "duration": 100,
+                            "skills": { "skill 3": 67, "skill 1": 44 }
+                        },
+                        {
+                            "name": "Task 3",
+                            "duration": 100,
+                            "skills": { "skill 1": 83, "skill 3": 34 }
+                        }
+                    ]
+                }
+        
             ]
         }
         }

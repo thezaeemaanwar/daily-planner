@@ -2,11 +2,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  align-content: center;
   text-align: center;
   flex-direction: column;
-  height: 100vh;
+  min-height: 100vh;
   /* border: 1px solid black; */
   background: linear-gradient(to right, rgb(92, 193, 190), rgb(240, 182, 247));
+  padding: 20px;
 }
 
 .glassBackground {
@@ -30,6 +32,11 @@ table tbody tr td {
 table tbody tr .lastRow {
   border-top: 2px solid rgb(24, 59, 92);
 }
+
+.icon-td{
+  /* background-color: tomato; */
+  width: 50px;
+} 
 
 table {
   /* background-color: rgb(240, 238, 238); */
@@ -66,6 +73,8 @@ button:hover {
 .weekDays {
   display: flex;
   flex-direction: row;
+  position: sticky;
+  top: 0;
 }
 button {
   background-color: rgb(24, 59, 92);
@@ -75,13 +84,33 @@ button {
 }
 
 .signOut {
-  position: absolute;
+  position: fixed;
   bottom: 25px;
   right: 25px;
 }
 
-.container{
+.container {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+#date {
+  display: block;
+  background-color: rgb(157, 188, 212);
+  color: black;
+}
+
+.sessionTable {
+  margin: 10px;
+}
+
+input {
+  padding: 10px;
+  width: 100px;
+  background-color: transparent;
+}
+
+.deleteIcon{
+  padding:3px;
 }

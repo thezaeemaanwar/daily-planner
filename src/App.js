@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
-import ScheduleTable from "./components/ScheduleTable";
 import Signup from "./components/Signup";
 import firebase from "firebase";
+import Session from "./components/Session";
 
 const weekDays = ["Mon", "Tues", "Wed", "Thu", "Fri", "Sat"];
 const data = require("./components/schema.json");
@@ -11,10 +11,10 @@ const App = () => {
   const date = new Date();
   const [selectedDay, setSelectedDay] = useState("Mon");
   const [user, setUser] = useState({});
+  const [allPlans, setAllPlans] = useState(data.users.daysData);
   const [currentDate, setCurrentDate] = useState(
     date.getMonth() + 1 + "/" + date.getDate() + "/" + date.getFullYear()
   );
-  console.log("current date : ", currentDate);
 
   useEffect(() => {
     const createUserInDB = async () => {
@@ -44,65 +44,44 @@ const App = () => {
     setSelectedDay(day);
   };
 
-  return (
-    <div className="App">
-      {!user.uid ? (
-        <div className="glassBackground">
-          <Signup setUser={setUser} />
-        </div>
-      ) : (
-        <>
-          {/* {data.users.daysData[currentDate].map()} */}
-          <div>
-            <div className="weekDays">
-            {/* <div className="head">{currentDate}</div> */}
-              {weekDays.map((day, ind) => (
-                <div
-                  key={ind}
-                  className={day === selectedDay ? "headSelected" : "head"}
-                  onClick={() => handleSelectDay(day)}
-                >
-                  {day}
-                </div>
-              ))}
-            </div>
+  console.log("current date : ", currentDate);
+  console.log("Plans : ", allPlans);
+  console.log("Current date plan : ", allPlans[currentDate]);
 
-            <table>
-              <thead>
-                <tr>
-                  <td></td>
-                </tr>
-              </thead>
-              <ScheduleTable
-                skills={["skill 1", "skill 2"]}
-                tasks={[
-                  {
-                    name: "Task 1",
-                    duration: 100,
-                    skills: {  "skill 2": 34 },
-                  },
-                  {
-                    name: "Task 3",
-                    duration: 100,
-                    skills: { "skill 1": 67, "skill 2": 44 },
-                  },
-                  {
-                    name: "Task 3",
-                    duration: 100,
-                    skills: { "skill 1": 83, "skill 2": 34 },
-                  },
-                ]}
-              />
-            </table>
-            <button
-              onClick={() => firebase.auth().signOut()}
-              className="signOut"
+  return !user.uid ? (
+    <div className="App">
+      <div className="glassBackground">
+        <Signup setUser={setUser} />
+      </div>
+    </div>
+  ) : (
+    <div className="App">
+      <>
+        {/* {data.users.daysData[currentDate].map()} */}
+
+        <div className="weekDays">
+          {weekDays.map((day, ind) => (
+            <div
+              key={ind}
+              className={day === selectedDay ? "headSelected" : "head"}
+              onClick={() => handleSelectDay(day)}
             >
-              Sign Out
-            </button>
-          </div>
-        </>
-      )}
+              {day}
+            </div>
+          ))}
+        </div>
+        <div className="head">
+          {currentDate}
+        </div>
+
+        {allPlans[currentDate].map((sessionData, i) => (
+          <Session key={i} data={sessionData} />
+        ))}
+
+        <button onClick={() => firebase.auth().signOut()} className="signOut">
+          Sign Out
+        </button>
+      </>
     </div>
   );
 };

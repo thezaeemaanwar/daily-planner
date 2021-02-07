@@ -1,4 +1,5 @@
 import React, { useState, useRef } from "react";
+import DeleteIcon from "@material-ui/icons/Delete";
 
 const ScheduleTable = (props) => {
   const [skills, setSkills] = useState(props.skills);
@@ -9,8 +10,10 @@ const ScheduleTable = (props) => {
   const handleAddSkill = () => {
     if (addBtnText === "Add") {
       const temp = [...skills];
-      temp.push(<input type="text" placeholder="New Skill" ref={skillRef} />);
+      temp.push(<input type="text" placeholder="Skill Name" ref={skillRef} />);
       setSkills(temp);
+      const temp2 = [...tasks];
+
       setAddBtnText("Save");
     } else {
       setAddBtnText("Add");
@@ -37,9 +40,12 @@ const ScheduleTable = (props) => {
     return sum;
   };
 
+  const handleDeleteTask = (ind) => {};
+
   return (
     <tbody>
       <tr>
+        <td></td>
         <td></td>
         <td>
           <b>Duration</b>
@@ -58,6 +64,11 @@ const ScheduleTable = (props) => {
       </tr>
       {tasks.map((task, ind) => (
         <tr key={ind}>
+          <td className = "icon-td">
+            <div onClick={() => handleDeleteTask(ind)} className="deleteIcon">
+              <DeleteIcon />
+            </div>
+          </td>
           <td>
             <b>{task.name}</b>
           </td>
@@ -69,6 +80,9 @@ const ScheduleTable = (props) => {
         </tr>
       ))}
       <tr className="lastRow">
+        <td>
+          <button>Add Task</button>
+        </td>
         <td></td>
         <td>
           <b>Total</b>
