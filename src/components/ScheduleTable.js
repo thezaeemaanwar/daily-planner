@@ -6,8 +6,11 @@ const ScheduleTable = (props) => {
 
     const [skills, setSkills] = useState(props.skills)
     const [tasks, setTasks] = useState(props.tasks)
-    const [addBtnText, setAddBtnText] = useState('Add')
+    const [addBtnText, setAddBtnText] = useState('Add Skill')
+    const [addTaskBtn, setAddTaskBtn] = useState('Add Task')
+
     const skillRef = useRef()
+    const taskRef = useRef()
 
     useEffect(() => {
         setSkills(props.skills)
@@ -15,7 +18,7 @@ const ScheduleTable = (props) => {
     }, [props.skills, props.tasks])
 
     const handleAddSkill = () => {
-        if (addBtnText === 'Add') {
+        if (addBtnText === 'Add Skill') {
             const temp = [...skills]
             temp.push(
                 <input type="text" placeholder="Skill Name" ref={skillRef} />
@@ -25,7 +28,7 @@ const ScheduleTable = (props) => {
 
             setAddBtnText('Save')
         } else {
-            setAddBtnText('Add')
+            setAddBtnText('Add Skill')
             const temp = [...skills]
             const skillName = skillRef.current.value
             temp[temp.length - 1] = skillName
@@ -53,6 +56,31 @@ const ScheduleTable = (props) => {
         const temp = [...tasks]
         temp.splice(ind, 1)
         setTasks(temp)
+    }
+
+    const handleAddTask = () => {
+        if (addTaskBtn === 'Add Task') {
+            const temp = [...tasks]
+            temp.push({
+                name: (
+                    <input
+                        type="text"
+                        ref={taskRef}
+                        placeholder="New Task Name"
+                    />
+                ),
+                duration: 0,
+                skills: {}
+            })
+            setTasks(temp)
+            setAddTaskBtn('Save Task')
+        } else {
+            setAddTaskBtn('Add Task')
+            const obj = { name: taskRef.current.value, duration: 0, skills: {} }
+            const temp = [...tasks]
+            temp[temp.length - 1] = obj
+            setTasks(temp)
+        }
     }
 
     return (
@@ -98,7 +126,7 @@ const ScheduleTable = (props) => {
             <tr className="lastRow">
                 <td></td>
                 <td>
-                    <button>Add Task</button>
+                    <button onClick={handleAddTask}>{addTaskBtn}</button>
                 </td>
                 <td>
                     <b>Total</b>
