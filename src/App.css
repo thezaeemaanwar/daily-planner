@@ -1,116 +1,136 @@
 .App {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  align-content: center;
-  text-align: center;
-  flex-direction: column;
-  min-height: 100vh;
-  /* border: 1px solid black; */
-  background: linear-gradient(to right, rgb(92, 193, 190), rgb(240, 182, 247));
-  padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+    flex-direction: column;
+    min-height: 100vh;
+    /* border: 1px solid black; */
+    background: linear-gradient(
+        to right,
+        rgb(92, 193, 190),
+        rgb(240, 182, 247)
+    );
+    padding: 20px;
 }
 
 .glassBackground {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 100px;
-  background: linear-gradient(
-    to right,
-    rgba(168, 238, 236, 0.5),
-    rgba(232, 194, 236, 0.3)
-  );
-  border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 100px;
+    background: linear-gradient(
+        to right,
+        rgba(168, 238, 236, 0.5),
+        rgba(232, 194, 236, 0.3)
+    );
+    border-radius: 10px;
 }
 
 table tbody tr td {
-  padding: 10px;
-  width: 100px;
+    padding: 10px;
+    width: 100px;
 }
 
 table tbody tr .lastRow {
-  border-top: 2px solid rgb(24, 59, 92);
+    border-top: 2px solid rgb(24, 59, 92);
 }
 
-.icon-td{
-  /* background-color: tomato; */
-  width: 50px;
-} 
+.icon-td {
+    /* background-color: tomato; */
+    width: 50px;
+}
 
 table {
-  /* background-color: rgb(240, 238, 238); */
-  box-shadow: rgba(184, 180, 180, 0.3) 2px 3px 4px;
-  background: linear-gradient(
-    to right,
-    rgba(168, 238, 236, 0.5),
-    rgba(250, 200, 242, 0.3)
-  );
-  border-radius: 10px;
+    /* background-color: rgb(240, 238, 238); */
+    box-shadow: rgba(184, 180, 180, 0.3) 2px 3px 4px;
+    background: linear-gradient(
+        to right,
+        rgba(168, 238, 236, 0.5),
+        rgba(250, 200, 242, 0.3)
+    );
+    border-radius: 10px;
 }
 .head {
-  background-color: rgb(24, 59, 92);
-  color: aliceblue;
-  width: 100px;
-  padding: 10px;
+    background-color: rgb(24, 59, 92);
+    color: aliceblue;
+    width: 100px;
+    padding: 10px;
 }
 .headSelected,
 button:focus {
-  background-color: rgb(57, 102, 139);
-  color: aliceblue;
-  width: 100px;
-  padding: 10px;
+    background-color: rgb(57, 102, 139);
+    color: aliceblue;
+    width: 100px;
+    padding: 10px;
 }
 .head:hover,
 button:hover {
-  cursor: pointer;
-  background-color: rgb(38, 77, 114);
+    cursor: pointer;
+    background-color: rgb(38, 77, 114);
 }
 
 .head:focus {
-  background-color: rgb(228, 234, 240);
+    background-color: rgb(228, 234, 240);
 }
 .weekDays {
-  display: flex;
-  flex-direction: row;
-  position: sticky;
-  top: 0;
+    display: flex;
+    flex-direction: row;
+    position: sticky;
+    top: 0;
 }
 button {
-  background-color: rgb(24, 59, 92);
-  color: aliceblue;
-  width: 100px;
-  padding: 10px;
+    background-color: rgb(24, 59, 92);
+    color: aliceblue;
+    width: 100px;
+    padding: 10px;
 }
 
 .signOut {
-  position: fixed;
-  bottom: 25px;
-  right: 25px;
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
 }
 
 .container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #date {
-  display: block;
-  background-color: rgb(157, 188, 212);
-  color: black;
+    display: block;
+    background-color: rgb(157, 188, 212);
+    color: black;
 }
 
 .sessionTable {
-  margin: 10px;
+    margin: 10px;
 }
 
 input {
-  padding: 10px;
-  width: 100px;
-  background-color: transparent;
+    padding: 10px;
+    width: 100px;
+    background-color: transparent;
 }
 
-.deleteIcon{
-  padding:3px;
+.deleteIcon {
+    padding: 3px;
+}
+
+.addSessionForm {
+    display: flex;
+    width: 30%;
+    justify-content: space-evenly;
+    padding: 10px;
+    background: linear-gradient(
+        to right,
+        rgba(168, 238, 236, 0.5),
+        rgba(250, 200, 242, 0.3)
+    );
+    margin: 10px;
+}
+.addSessionForm input {
+    width: 150px;
 }
