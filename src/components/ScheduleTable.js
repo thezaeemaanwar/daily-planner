@@ -2,8 +2,6 @@ import React, { useState, useRef, useEffect } from 'react'
 import DeleteIcon from '@material-ui/icons/Delete'
 
 const ScheduleTable = (props) => {
-    console.log('schedule atvele : ', props)
-
     const [skills, setSkills] = useState(props.skills)
     const [tasks, setTasks] = useState(props.tasks)
     const [addBtnText, setAddBtnText] = useState('Add Skill')
@@ -11,11 +9,18 @@ const ScheduleTable = (props) => {
 
     const skillRef = useRef()
     const taskRef = useRef()
+    const durationRef = useRef()
+    const taskSkillRef = useRef()
 
     useEffect(() => {
         setSkills(props.skills)
         setTasks(props.tasks)
-    }, [props.skills, props.tasks])
+    }, [props])
+
+
+    useEffect(()=>{
+        props.setData({skills:skills, tasks:tasks})
+    }, [tasks, skills])
 
     const handleAddSkill = () => {
         if (addBtnText === 'Add Skill') {
@@ -24,7 +29,6 @@ const ScheduleTable = (props) => {
                 <input type="text" placeholder="Skill Name" ref={skillRef} />
             )
             setSkills(temp)
-            const temp2 = [...tasks]
 
             setAddBtnText('Save')
         } else {
@@ -83,6 +87,32 @@ const ScheduleTable = (props) => {
         }
     }
 
+    const handleEditDuration = (ind) => {
+        const temp = [...tasks]
+        temp[ind].duration = (
+            <input type="text" placeholder="Duration (m)" ref={durationRef} />
+        )
+        setTasks(temp)
+    }
+
+    const handleDurationSave = (ind) => {
+        const temp = [...tasks]
+        temp[ind].duration = parseInt(durationRef.current.value)
+        setTasks(temp)
+    }
+    const handleTaskSkillEdit = (taskInd, skillInd) => {
+        const temp = [...tasks]
+        temp[taskInd].skills[skillInd] = (
+            <input type="text" placeholder="Skill Score" ref={taskSkillRef} />
+        )
+        setTasks(temp)
+    }
+
+    const handleSkillSave = (taskInd, skillInd) => {
+        const temp = [...tasks]
+        temp[taskInd].skills[skillInd] = parseInt(taskSkillRef.current.value)
+        setTasks(temp)
+    }
     return (
         <tbody>
             <tr>
@@ -116,9 +146,22 @@ const ScheduleTable = (props) => {
                     <td>
                         <b>{task.name}</b>
                     </td>
-                    <td>{task.duration}</td>
+                    <td
+                        onClick={() => handleEditDuration(ind)}
+                        onBlur={() => {
+                            handleDurationSave(ind)
+                        }}
+                    >
+                        {task.duration}
+                    </td>
                     {skills.map((skill, i) => (
-                        <td key={i}>{task.skills[skill]}</td>
+                        <td
+                            key={i}
+                            onClick={() => handleTaskSkillEdit(ind, skill)}
+                            onBlur={() => handleSkillSave(ind, skill)}
+                        >
+                            {task.skills[skill]}
+                        </td>
                     ))}
                     <td>{calulateTaskScore(task)}</td>
                 </tr>

@@ -6,26 +6,50 @@
     text-align: center;
     flex-direction: column;
     min-height: 100vh;
-    /* border: 1px solid black; */
     background: linear-gradient(
         to right,
-        rgb(92, 193, 190),
-        rgb(240, 182, 247)
+        rgba(92, 193, 190),
+        rgba(240, 182, 247)
     );
     padding: 20px;
 }
 
+.circle {
+    width: 200px;
+    height: 200px;
+    position: fixed;
+    background: radial-gradient(
+        rgba(255, 255, 255, 0.5),
+        rgba(255, 255, 255, 0.3)
+    );
+    border-radius: 50%;
+    padding: 0;
+    z-index: 0;
+}
+
+#circle1 {
+    top: 5%;
+    right: 5%;
+}
+#circle2 {
+    bottom: 5%;
+    left: 5%;
+}
+
 .glassBackground {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 100px;
     background: linear-gradient(
-        to right,
-        rgba(168, 238, 236, 0.5),
-        rgba(232, 194, 236, 0.3)
+        to right bottom,
+        rgba(255, 255, 255, 0.2),
+        rgba(255, 255, 255, 0.3)
     );
     border-radius: 10px;
+    z-index: 1;
+    backdrop-filter: blur(2rem);
 }
 
 table tbody tr td {
@@ -38,13 +62,11 @@ table tbody tr .lastRow {
 }
 
 .icon-td {
-    /* background-color: tomato; */
     width: 50px;
 }
 
 table {
-    /* background-color: rgb(240, 238, 238); */
-    box-shadow: rgba(184, 180, 180, 0.3) 2px 3px 4px;
+    box-shadow: rgba(201, 197, 197, 0.3) 2px 3px 4px;
     background: linear-gradient(
         to right,
         rgba(168, 238, 236, 0.5),
@@ -91,6 +113,7 @@ button {
     position: fixed;
     bottom: 25px;
     right: 25px;
+    z-index: 3;
 }
 
 .container {
@@ -121,16 +144,29 @@ input {
 
 .addSessionForm {
     display: flex;
-    width: 30%;
+    width: 40%;
     justify-content: space-evenly;
     padding: 10px;
-    background: linear-gradient(
-        to right,
-        rgba(168, 238, 236, 0.5),
-        rgba(250, 200, 242, 0.3)
-    );
+    
     margin: 10px;
 }
 .addSessionForm input {
-    width: 150px;
+    width: 60%;
+}
+
+.sessionTitle {
+    align-self: center;
+    display: flex;
+    align-items: center;
+    width: 30%;
+    /* background-color: antiquewhite; */
+    justify-content: space-between;
+}
+
+.date-bar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 60%;
+    /* background-color: ivory; */
 }
